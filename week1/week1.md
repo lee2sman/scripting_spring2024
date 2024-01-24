@@ -1,5 +1,3 @@
-# Week 01 - HTML and CSS
-
 ## Today's Plan
 1. Introduction
 2. Get to know each other
