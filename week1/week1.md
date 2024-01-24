@@ -275,7 +275,7 @@ Don't do this all at once. It could/should take a few hours. And you want to tak
 * THIS IS ESSENTIAL: [Web Design in 4 Minutes](https://jgthms.com/web-design-in-4-minutes/)
 * [Learn Layout tutorial](http://learnlayout.com/)
 
-## Create: Due next Wednesday by noon
+## Create: Due next week
 
 ## Create a Personal site: dreams, fears, a map, what to eat, clouds you have known
 
@@ -293,12 +293,17 @@ Do you have another idea you'd rather make? Then do that.
 
 You will be evaluated by:
 
-* Execution
-  * Does the website work?
-  * Is the code fully functional?
-* Concept 
-  * Does the concept make sense?
-  * Is it a novel idea? 
+### Requirements
+  * Use "semantic html": at least html, head, body, headers (h1, h2, h3, etc), p tags
+  * Use an external stylesheet of CSS that you call from your index
+  * Include at least one image
+  * Body text should be centered, with a margin
+  * Text should be readable
+  * Assign fonts, sizes, colors
+  * Text must be readable
+  * Code must work
+  * Your concept and design should be clear and compelling
+  * Your layout should make sense, not look broken or messed up on different computers/window sizes
 
 ### Due in three weeks: A class site of your own
 
@@ -326,10 +331,11 @@ Example sites that rely on good, simple, clear HTML + CSS sites are:
 
 * [Hundred Rabbits](https://100r.co/site/home.html) - solarpunk hacker artists
 * [My Blog Is A Digital Garden](https://joelhooks.com/digital-garden) - a ~~blog~~ digital garden
+* [Diagram Website](https://diagram.website/)
 * [HTML Energy](https://html.energy/) - a podcast
+* [Extra Practice space](https://extrapractice.space/)
 * [XXIIVV](https://wiki.xxiivv.com/site/home.html) - personal wiki and project tracking	
 * [Sounds of a Revolution](https://soundsofarevolution.glitch.me/) - class site for Ari Melenciano's course at Hunter College
 * [Learning Gardens](http://learning-gardens.co/) - landing page for a collaborative group
 * [tehn](https://nnnnnnnn.co/) - electronic composer
-* [snarkmarket](http://snarkmarket.com/) - blog of novelist Robin Sloan
 
