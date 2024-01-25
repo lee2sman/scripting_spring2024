@@ -1,4 +1,5 @@
 ## Today's Plan
+
 1. Introduction
 2. Get to know each other
 3. Syllabus
@@ -115,20 +116,35 @@ Very little CSS style at all on [Text-only NPR](https://text.npr.org/)
 [Tim Berners-Lee](https://www.w3.org/People/Berners-Lee/) is the inventor of the modern web.
 
 Olia Lialina's [Top 10 Web Design Styles of 1993](http://contemporary-home-computing.org/prof-dr-style/) 
+### A starter website with just HTML
 
-### Warm-up Activity: Building a Text Editor 
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Our new website</title>
+  </head>
+  <body>
+    <h1>Welcome!</h1>
+    <p>Hi and welcome to my website!</p>
+    <h2>Section 2!</h2>
+    <p>Great info here.</p>
+  </body>
+</html>
+```
+We can images. Unlike most of our other tags, they don't have a closing tag.
 
-Our first activity will be to build a text editor in the browser with some CSS.
+```
+<img src="my-photo.jpg">
+```
 
-We'll start by remixing our starter website to make a new site.
+### Add some style
 
 Now we need to talk about CSS.
 
-
 CSS stands for Cascading Style Sheet.
 
-CSS is how we style our content.
-
+CSS is how we style our content. We can change colors, fonts, sizes of things, specify placement, etc.
 
 Syntax:
 
@@ -155,18 +171,24 @@ p {
 
 ```
 
-
 ### Web Color
 
 You can specify colors with a web color name, or RGB values, or, most commonly, HTML color.
 
 There is a very 90s-style website [HTML Color Codes](http://html-color-codes.com/) and hundreds of color pickers if you do a simple [web search](https://duckduckgo.com/?t=canonical&q=css+color+picker&atb=v198-1&ia=web) for CSS color picker or HTML color picker.
 
-### Contenteditable
+### Italics, Bolding
 
-You can read more about [contenteditable](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/contenteditable). 
+```html
+<i>This text will be italicized</i>
+<em>This is another way to do italicization </em>
+```
+My understanding is ```<em>``` and ```<strong>``` are the more 'proper' way to write ["semantic"](https://www.w3schools.com/html/html5_semantic_elements.asp) italicized and bolded html, which helps screen readers, accessibility tools and cross-platform applications.
 
-We will use the contenteditable attribute as a starting point to make our own browser-based text editor.
+```html
+<b>Bolded text</b>
+<strong>Will also be bold, and is the preferred way</strong>
+```
 
 ### External Stylesheets
 
@@ -203,10 +225,6 @@ Example: I have a folder WEBSITE holding style.css and another folder HOME. Insi
 ```
 
 And that's how it's done!
-
-### In-class project: Remix the stylesheet for Scripting For The Web
-
-Create a new external stylesheet that I can call from the HTML page I am using to hold our class site.
 
 ### DIVS and assigning Tags, Classes and IDs
 
@@ -254,13 +272,6 @@ stylesheet:
 }
 ```
 
-### In-class: Re-Style the Scripting For The Web week 1 page
-
-**Method:**
-
-1. Grab the HTML code for Week1. Go to https://leetusman.com/scripting_spring2024/week1 and right click-> Save as. Save it into a new folder. Add a stylesheet. Link to the stylesheet from the week1 html page.
-2. Make your own choices of colors, fonts, placement. You can make the page brutalist, minimalist, maximalist or something entirely unique. But don't make it bland, broken or blah.
-
 ## Homework
 
 ### Read HTML and CSS Tutorials
@@ -268,8 +279,10 @@ stylesheet:
 Don't do this all at once. It could/should take a few hours. And you want to take time to practice and try things out.
 
 * W3Schools HTML [tutorial](https://www.w3schools.com/html/) - down to Layout
-  * *I recommend jumping over to CSS tutorials, and then back to reading about and practicing Flexbox afterward.*  There are many ways to lay out items on a webpage, and this takes lots of practice. For this course I will concentrate on Flexbox and using Frameworks. Once you understand how it works, you will probably build your own page layout template and then can re-use this for various sites you build. 
-* W3Schools CSS [tutorials](https://www.w3schools.com/css/default.asp) - down to the Box Model section
+* Pick a path:
+  * Beginner or need refresher on CSS: Review the [CSS tutorials](https://www.w3schools.com/Css/) from Home go down through the tutorials until you complete the box model, outline, text/font sections. 
+  * If you already are "okay" at CSS: Go through the CSS [flexbox](https://www.w3schools.com/csS/css3_flexbox.asp) (aka "flexible box") tutorial on w3schools
+  * For students feeling comfortable with flexbox, build your "starting template" for pages/websites. 
 * THIS IS ESSENTIAL: [Web Design in 4 Minutes](https://jgthms.com/web-design-in-4-minutes/)
 * [Learn Layout tutorial](http://learnlayout.com/)
 
@@ -327,13 +340,14 @@ Your work will be evaluated based on the following. Those with previous HTML and
 
 Example sites that rely on good, simple, clear HTML + CSS sites are:
 
+* [cblgh](https://www.cblgh.org/) - researcher, engineer, developer 
+* [The Creative Independent](https://thecreativeindependent.com/) - arts interviews and articles
 * [Hundred Rabbits](https://100r.co/site/home.html) - solarpunk hacker artists
-* [My Blog Is A Digital Garden](https://joelhooks.com/digital-garden) - a ~~blog~~ digital garden
-* [Diagram Website](https://diagram.website/)
 * [HTML Energy](https://html.energy/) - a podcast
+* [Diagram website](https://diagram.website/) - fun personal map of the internet
 * [Extra Practice space](https://extrapractice.space/)
+* [Ellugar - Mario Carballo Zama](https://ellugar.co/) - game designer 
+* [Ritual Dust](https://ritualdust.com/) - fantasy and craft artist
 * [XXIIVV](https://wiki.xxiivv.com/site/home.html) - personal wiki and project tracking	
-* [Sounds of a Revolution](https://soundsofarevolution.glitch.me/) - class site for Ari Melenciano's course at Hunter College
-* [Learning Gardens](http://learning-gardens.co/) - landing page for a collaborative group
 * [tehn](https://nnnnnnnn.co/) - electronic composer
-
+* Links to many more great clean, creatively designed and hand-coded websites at [Gossip's Web](https://gossipsweb.net/)
