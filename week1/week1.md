@@ -315,6 +315,20 @@ You will be evaluated by:
   * Code must work
   * Your concept and design should be clear and compelling
   * Your layout should make sense, not look broken or messed up on different computers/window sizes
+  
+Example sites that rely on good, simple, clear HTML + CSS sites are:
+
+* [cblgh](https://www.cblgh.org/) - researcher, engineer, developer 
+* [The Creative Independent](https://thecreativeindependent.com/) - arts interviews and articles
+* [Hundred Rabbits](https://100r.co/site/home.html) - solarpunk hacker artists
+* [HTML Energy](https://html.energy/) - a podcast
+* [Diagram website](https://diagram.website/) - fun personal map of the internet
+* [Extra Practice space](https://extrapractice.space/)
+* [Ellugar - Mario Carballo Zama](https://ellugar.co/) - game designer 
+* [Ritual Dust](https://ritualdust.com/) - fantasy and craft artist
+* [XXIIVV](https://wiki.xxiivv.com/site/home.html) - personal wiki and project tracking	
+* [tehn](https://nnnnnnnn.co/) - electronic composer
+* Links to many more great clean, creatively designed and hand-coded websites at [Gossip's Web](https://gossipsweb.net/)
 
 ### Due in three weeks: A class site of your own
 
@@ -337,17 +351,4 @@ Your work will be evaluated based on the following. Those with previous HTML and
   * Is it clear how to access your pages?
 * Consistency
   * is the design consistent or are things in strange or confusing places?
-
-Example sites that rely on good, simple, clear HTML + CSS sites are:
-
-* [cblgh](https://www.cblgh.org/) - researcher, engineer, developer 
-* [The Creative Independent](https://thecreativeindependent.com/) - arts interviews and articles
-* [Hundred Rabbits](https://100r.co/site/home.html) - solarpunk hacker artists
-* [HTML Energy](https://html.energy/) - a podcast
-* [Diagram website](https://diagram.website/) - fun personal map of the internet
-* [Extra Practice space](https://extrapractice.space/)
-* [Ellugar - Mario Carballo Zama](https://ellugar.co/) - game designer 
-* [Ritual Dust](https://ritualdust.com/) - fantasy and craft artist
-* [XXIIVV](https://wiki.xxiivv.com/site/home.html) - personal wiki and project tracking	
-* [tehn](https://nnnnnnnn.co/) - electronic composer
-* Links to many more great clean, creatively designed and hand-coded websites at [Gossip's Web](https://gossipsweb.net/)
+  
