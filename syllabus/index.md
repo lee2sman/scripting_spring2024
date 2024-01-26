@@ -7,7 +7,7 @@ Pronouns: he/him
 Contact: Lee.Tusman@purchase.edu  
 Course: CRN 64657 / MAT 3146  
 Office Hours: Mondays 12:30 - 14:30  
-Room: Nat Sci 2001  
+Room: Nat Sci 3001  
 
 ![Purchase College clock tower - dithered](../assets/purchase.gif)
 
