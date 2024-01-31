@@ -3,3 +3,7 @@ html {
 		radial-gradient(ellipse at right, #4d9f0c, transparent);
 	height: 100%;
 }
+body {
+	background-color: rgba(255, 255, 255, 0.5);
+	border-radius: 4px;
+}
