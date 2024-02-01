@@ -268,8 +268,7 @@ Play with these [here](https://www.w3schools.com/csS/css3_flexbox.asp)
 # Homework
 
 1. Continue work on your class homepage. See week 1 homework for more info.
-2. Refine your personal site assigned from week 1 homework. Make improvements to the CSS. If you have previous web experience, **make your site mobile-responsive**. Upload your finished site to your student server space. Keep in mind file structure and URL structure. Your website should have a name that's easy to navigate, like http://faculty.purchase.edu/lee.tusman/personal-map
-
+2. Refine your personal site assigned from week 1 homework. Make improvements to the CSS. **Make your site mobile-responsive**. Upload your finished site to your student server space. Keep in mind file structure and URL structure. Your website should have a name that's easy to navigate, like http://students.purchase.edu/firstname.lastname/personal-map 
 
 You will be evaluated by:
 
@@ -278,7 +277,7 @@ You will be evaluated by:
   * Is it uploaded to the college server space?
   * Is the code fully functional?
   * Does the URL and file structure make sense and is easy to navigate?
-  * For those with previous classes in web design: Is it mobile-responsive?
+  * Is it mobile-responsive? (TEST ON MULTIPLE BROWSERS, MACHINES)
 * Concept 
   * Does the concept make sense?
   * Is it a novel idea? 
