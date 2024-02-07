@@ -1,6 +1,6 @@
 ## Agenda
 
-**Important: Next week 2/16 we will be ZOOMing for Class**
+**Important: Next week 2/14 we will be ZOOMing for Class**
 
 * Review
   * File structure cheatsheet
