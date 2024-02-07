@@ -1,5 +1,3 @@
-# Week 3
-
 ## Agenda
 
 **Important: Next week 2/16 we will be ZOOMing for Class**
