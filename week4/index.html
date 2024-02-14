@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Week 4 - Intro to Scripting with jQuery</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="../assets/classless.css" />
+  <link rel="stylesheet" href="../assets/post.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Week 4 - Intro to Scripting with jQuery</h1>
+</header>
+<p>Schedule:</p>
+<ul>
+<li>Check-in</li>
+<li>Warm-up Browsing</li>
+<li>jQuery Fun</li>
+<li>pair up - student feedback on ‘subversive site’</li>
+<li>New Media Lecture series Tonight!</li>
+</ul>
+<h2 id="jquery-basics">jQuery Basics</h2>
+<p><em>- note: there are <a href="jquery.pdf">slides</a></em></p>
+<p>We’ve learned a ton so far. We now understand the basics of
+Javascript values, variables and functions. We understand the concept of
+the DOM and know that Javascript lets us modify the DOM.</p>
+<p>With that knowledge we’re going to add one other tool. This is the
+Javascript library jQuery.</p>
+<p>Broadly stated, a programming library is a package of code with
+pre-written functions (and possibly variables, classes, etc) to simplify
+working in a specific area or category. jQuery is a Javascript library
+that makes programming in Javascript easier and it is quick to
+learn.</p>
+<p>To use jQuery you first must pull it into your index file on the page
+where you want to use it. You can add your own jQuery code inside the
+<code>&lt;script&gt;&lt;/script&gt;</code> tags or link to an external
+script.</p>
+<p>Example</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;title&gt;Minimal example - working with jquery&lt;/title&gt;
+  &lt;body&gt;
+    &lt;script src=&quot;jquery.js&quot;&gt;
+    &lt;script src=&quot;script.js&quot;&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>jQuery is the most famous Javascript library and at one point could
+be found on over 60% of websites. There are 2 options to use it:</p>
+<h3 id="download-jquery-and-save-it-in-your-sites-directory">Download
+jQuery and save it in your site’s directory</h3>
+<p><a href="https://jquery.com/download/">Download it</a>. Choose the
+compressed, production version 3.3.1. Then add a link to it in your html
+index document. Then add a link to your own external script file after
+that, normally before the closing <code>&lt;/body&gt;</code> tag.</p>
+<h3 id="or-use-a-cdn">or use a CDN</h3>
+<p>A CDN means Content Delivery Network. Since so much of the web uses
+jQuery, there are companies and foundations that provide free links to
+jQuery online. Rather than having folks download jQuery from each
+website that uses it, a website developer can instead link to one of
+these centrally provided copies of jQuery online. That way, when someone
+visits your webpage, they will already have a copy of jQuery cached in
+their browser, and so your page will load faster.</p>
+<p>Example - exactly same as above except for the jquery link</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;title&gt;Minimal example - working with jquery&lt;/title&gt;
+  &lt;body&gt;
+    &lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;script.js&quot;&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<h3 id="whats-it-for">What’s it for?</h3>
+<p>Same things as Javascript</p>
+<ul>
+<li>Dynamic change</li>
+<li>Interaction!</li>
+</ul>
+<h3 id="where-to-place-it">Where to place it</h3>
+<ul>
+<li><p>In HEAD or BODY</p></li>
+<li><p>best practices are to add link to jquery and then link to your
+own external javascript file right before the closing
+<code>&lt;/body&gt;</code> tag</p></li>
+<li><p>why? so your HTML and CSS is loaded first and then your script is
+applied to them</p></li>
+</ul>
+<h2 id="jquery-basics-1">jQuery basics</h2>
+<p>If you understand how CSS works you can understand how jQuery
+works!</p>
+<p>With jQuery, our basic syntax is:</p>
+<pre><code>$(&#39;selector&#39;).action();</code></pre>
+<p><code>$</code> –&gt; tells the browser we’re using jQuery</p>
+<p><code>('selector')</code> –&gt; is a tag, class or id we are
+selecting on the webpage. Don’t forget the # or . for IDs and
+classes.</p>
+<p><code>action()</code> –&gt; is what action should be taken on what
+we’ve selected</p>
+<h3 id="example-minimal-jquery-call">Example minimal jQuery call</h3>
+<pre><code>$(&quot;p&quot;).click(function(){
+  alert(&quot;The paragraph was clicked.&quot;);
+}); </code></pre>
+<h4 id="document-ready">Document Ready</h4>
+<p>It’s <em>best practices</em> to wrap all of your jQuery code inside a
+<em>ready event</em>. In other words, we want all of our webpage’s HTML
+and CSS code to load first BEFORE we start running our jQuery code so
+that if our script needs content from our webpage it’s already loaded
+first.</p>
+<pre><code>$(document).ready(function(){
+
+  //our jQuery code goes here
+
+});</code></pre>
+<h4 id="jquery-selectors">jQuery selectors</h4>
+<p>Examples of things you can select:</p>
+<pre><code>$(&quot;p&quot;)</code></pre>
+<p>Example: When you click a button, all paragraphs are hidden</p>
+<pre><code>$(document).ready(function(){
+  $(&quot;button&quot;).click(function(){
+    $(&quot;p&quot;).hide();
+  });
+});</code></pre>
+<pre><code>$(&quot;*&quot;)  //select everything on page
+$(this) //select current element, whatever it is
+$(&quot;p.main&quot;) //select &lt;p&gt; elements with class &quot;main&quot;
+$(&quot;p:first&quot;)//select first &lt;p&gt; on page
+$(&quot;p:even&quot;) //select all even-numbered paragraphs
+$(&quot;a[target=&#39;/&#39;&quot;]//select all &lt;a&gt; that link to home (&quot;/&quot;)
+$(&quot;[href]&quot;) //select anything with a href attribute</code></pre>
+<p>Many more <a
+href="https://www.w3schools.com/jquery/jquery_selectors.asp">example
+selectors</a></p>
+<h3 id="jquery-events">jQuery events</h3>
+<p>Events are “things that can happen” on a webpage including:</p>
+<ul>
+<li>the page has loaded</li>
+<li>the page has been resized</li>
+<li>the page has been scrolled</li>
+<li>something has been clicked (or something has been double
+clicked)</li>
+<li>the mouse has hovered on something (or the mouse is no longer
+on)</li>
+<li>a button has been pressed (or a button has been held down, or
+released)</li>
+<li>a form has been submitted or the mouse cursor has entered a form
+field</li>
+</ul>
+<p>There are more events. You can find a listing of jQuery events <a
+href="https://www.w3schools.com/jquery/jquery_events.asp">here</a>.</p>
+<h4 id="common-events">Common events</h4>
+<pre><code>$(&quot;p&quot;).click(function(){
+  $(this).hide();
+});
+
+$(&quot;#main&quot;).mouseenter(function(){
+  alert(&quot;You entered main!&quot;);
+});
+</code></pre>
+<h4 id="effects">Effects</h4>
+<h5 id="hiding-effect">Hiding effect</h5>
+<pre><code>$(&quot;#hide&quot;).click(function(){
+  $(&quot;p&quot;).hide();
+});
+
+$(&quot;#show&quot;).click(function(){
+  $(&quot;p&quot;).show();
+});</code></pre>
+<h5 id="fading-effect">Fading effect</h5>
+<pre><code>fadeIn()
+fadeOut()
+fadeToggle()
+fadeTo()</code></pre>
+<p>example:</p>
+<pre><code>$(document).ready(function(){
+  $(&quot;button&quot;).click(function(){
+    
+    $(&quot;#div3&quot;).fadeIn(3000);
+  });
+});</code></pre>
+<p>more on <a
+href="https://www.w3schools.com/jquery/jquery_fade.asp">fading in and
+out options</a></p>
+<h4 id="other-effects">Other effects</h4>
+<p>Animations</p>
+<p>Slides</p>
+<p>Callbacks (functions that you want to have triggered when an effect
+finishes running)</p>
+<h4 id="jquery-chaining">jQuery chaining</h4>
+<p>Use multiple jQuery calls at once by chaining them together.</p>
+<pre><code>$(&quot;#p1&quot;).css(&quot;color&quot;, &quot;red&quot;).slideUp(2000).slideDown(2000); </code></pre>
+<p>To make it easier to read, you can break your code over multiple
+lines:</p>
+<pre><code>$(&quot;#p1&quot;).css(&quot;color&quot;, &quot;red&quot;)
+  .slideUp(2000)
+  .slideDown(2000); </code></pre>
+<h4 id="jquery-actions-get-content">jQuery Actions: GET content</h4>
+<ul>
+<li>text()</li>
+<li>html()</li>
+<li>attr()</li>
+<li>val()</li>
+</ul>
+<p>Easy to do!</p>
+<p><code>let myText = $('#main');</code></p>
+<h4 id="jquery-actions-set-content">jQuery Actions: SET content</h4>
+<pre><code>$(&#39;button&#39;).click(function(){
+
+  $(&#39;body&#39;).html(&quot;&lt;p&gt;Changing all your content!&lt;/p&gt;&quot;);
+});</code></pre>
+<h4 id="jquery-actions-add-content">jQuery Actions: ADD content</h4>
+<ul>
+<li>append()</li>
+<li>prepend()</li>
+<li>after()</li>
+<li>before()</li>
+</ul>
+<p>$(‘p’).prepend(“I believe the opposite of this:”);</p>
+<h5 id="remove-an-element">Remove an element</h5>
+<p>remove()</p>
+<p>Example:</p>
+<pre class="$(&#39;#main&#39;).remove();```"><code>
+### jQuery to alter CSS
+
+- addClass() - Adds one or more classes to the selected elements
+- removeClass() - Removes one or more classes from the selected elements
+- toggleClass() - Toggles between adding/removing classes from the selected elements
+- css() - Sets or returns the style attribute
+
+examples:
+</code></pre>
+<p>$(“button”).click(function(){ $(“h1, h2, h2,
+p”).toggleClass(“bg-Blue”); });</p>
+<pre><code>
+##### Get and Set CSS
+
+Get example:
+</code></pre>
+<p>let bg = $(‘body’).css(‘background-color’);</p>
+<pre><code>
+Set example:
+</code></pre>
+<p>$(“p”).css({“background-color”: “purple”, “font-size”: “4em”});</p>
+<pre><code>
+#### change Dimensions
+
+
+- width()
+- height()
+- innerWidth()
+- innerHeight()
+- outerWidth()
+- outerHeight()
+  
+ 
+#### An aside: anonymous functions and passing functions
+
+When we run ```$(document).ready(function(){})``` we are passing an anonymous function as an argument to ```$(document.ready()```
+
+There are two things of note here: anonymous functions, and passing functions as arguments.
+
+### Anonymous Functions
+
+1. Anonymous functions are created at *runtime*
+2. They don&#39;t have a name
+
+
+Example of a named (not anonymous function):
+</code></pre>
+<p>function flyToTheMoon(){ alert(“Zoom! Zoom! Zoom!”); }</p>
+<p>flyToTheMoon();</p>
+<pre><code>
+Anonymously
+</code></pre>
+<p>function() { alert(“Zoom! Zoom! Zoom!”); } ```</p>
+<p>So we have an anonymous function stored as flyToTheMoon now.</p>
+<p>Going back to our previous jQuery starter code, we are passing an
+anonymous function to the function ready(), which runs only once our
+page has loaded.</p>
+<h3 id="jquery-resources">jQuery resources</h3>
+<ul>
+<li>jQuery <a
+href="https://www.w3schools.com/jquery/jquery_ref_overview.asp">reference</a></li>
+<li>jQuery <a
+href="https://www.w3schools.com/jquery/jquery_events.asp">events</a></li>
+</ul>
+<h2 id="homework">Homework</h2>
+<h3 id="reading">Reading</h3>
+<ul>
+<li>Do the w3schools <a href="https://www.w3schools.com/jquery/">jQuery
+tutorial</a>
+<ul>
+<li>Be sure to really understand the sections:</li>
+<li><a href="https://www.w3schools.com/jquery/jquery_syntax.asp">jQuery
+syntax</a></li>
+<li><a
+href="https://www.w3schools.com/jquery/jquery_selectors.asp">jQuery
+selectors</a></li>
+<li><a href="https://www.w3schools.com/jquery/jquery_events.asp">jQuery
+events</a></li>
+</ul></li>
+<li>Write down any questions and bring them to class</li>
+</ul>
+<h3 id="create-a-bizarresubversive-jquery-site">Create a
+bizarre/subversive jQuery site</h3>
+<p>Watch <a href="https://www.youtube.com/watch?v=JI8AMRbqY6w">They
+Live</a></p>
+<p>Browse <a
+href="https://web.archive.org/web/20180102111443/http://www.adultswim.com/promotions/claridryl">Claridryl</a>
+website on Wayback machine</p>
+<p>Create a fake (possibly a corporate) webpage that appears to be about
+one thing. Use generic language, stock images, etc.</p>
+<p>Use an event (clicking a button, a timer, or some other method) to
+trigger a change in the website that makes changes to subvert the
+initial site. This could be a secret hacker ring, aliens, another
+civilization, or some group attempting to bring that corporation down,
+or perhaps show the company’s actually true intentions. Use your
+imagination to make this wild and far out. You may want to plan and
+sketch this first in a notebook. You may struggle turning the idea into
+your head into reality via your code. Write down problems you can’t
+solve in your notebook. Look for solutions. Take breaks!</p>
+<p>You have two weeks to do this assignment!</p>
+<p>For next week: - What is your concept? - What is your corporation or
+entity’s name? - What is your method? Will you use a framework or
+handcode or…? - Mock up the pages in a notebook or sketch on computer -
+Start working on it. Create HTML, CSS to demonstrate next week.</p>
+<p>Method:</p>
+<ol type="1">
+<li>Decide your fake corporate entity. Pick a name. Pick fonts to use,
+colors, design schemes. You may want to use CSS Grid or Flexbox.</li>
+<li>Go to <a
+href="https://www.pexels.com/public-domain-images/">Pexels</a> or <a
+href="https://pixabay.com/">Pixabay</a> public domain images and search
+for an image (or multiple images to use). You can download them and use
+them freely.</li>
+</ol>
+<p>When finished, link to your project’s site from your class website
+you made last week.</p>
+<p>Grading Rubric:</p>
+<p>25% Concept Idea - Does the concept make sense? - Is it a novel idea?
+- Does the execution match the concept? - Quality of the content
+including the surprising hidden content that rewards the user’s
+discovery</p>
+<p>25% Design - Is the site organized into separate HTML, CSS
+stylesheet(s) and Javascript/jQuery - Is the navigation intuitive? -
+Does the site work on different browsers and screen sizes?</p>
+<p>25% Functionality - Does the jQuery function properly? - Does the
+project work as intended?</p>
+<p>25% Completeness - Does the project have a title? - Do all pages have
+proper headings (h1, etc) and realistic text (not dummy) and pages with
+content? - Do the pages feel complete? - Project contains a website with
+both obvious corporate entity and hidden subversive messaging</p>
+<h3 id="example-hidden-parts-of-sites">Example hidden parts of
+sites</h3>
+<ul>
+<li><a href="https://theoatmeal.com/">The Oatmeal</a> (hint: view
+source)</li>
+<li><a href="https://www.qwantz.com/">Dinosaur Comics</a> (view
+source)</li>
+<li><a href="https://www.google.com/search?q=text+adventure">Google
+Chrome Text Adventure</a></li>
+</ul>
+<p><a
+href="https://dev.to/rose/playing-with-easter-eggs-ideas-for-making-your-website-more-fun-1p0p">Ideas
+for triggering easter eggs</a></p>
+</body>
+</html>
