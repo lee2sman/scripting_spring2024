@@ -12,6 +12,69 @@
     div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
     .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
   <link rel="stylesheet" href="../assets/classless.css" />
@@ -24,11 +87,16 @@
 <header id="title-block-header">
 <h1 class="title">Week 6 - JSON and Custom Extensions</h1>
 </header>
-<h1 id="week-6">Week 6</h1>
+<p>Today:</p>
 <ul>
-<li>Data</li>
-<li>Intro to JSON</li>
-<li>Extensions</li>
+<li>review Subversive Website assignment</li>
+<li>(The wonderful world of) data formats</li>
+<li>intro to JSON</li>
+<li>extensions</li>
+</ul>
+<h2 id="subversive-websites">Subversive websites</h2>
+<ul>
+<li>project review</li>
 </ul>
 <h2 id="data-formats">Data formats</h2>
 <p>Data can be saved in many kinds of formats.</p>
@@ -40,20 +108,27 @@
 point</li>
 <li>a web page</li>
 </ul>
-<h3 id="json">JSON</h3>
+<figure>
+<img src="../assets/spreadsheet.png" alt="spreadsheet snippet" />
+<figcaption aria-hidden="true">spreadsheet snippet</figcaption>
+</figure>
+<h2 id="json">JSON</h2>
 <p>JSON is a good standard way of working with data files and is based
 on how Javascript literal objects are defined.</p>
 <p>JSON uses JavaScript syntax. The JSON format is text only.</p>
 <p>JSON is written in a key-value pair format.</p>
-<pre><code>&quot;name&quot;:&quot;John&quot; </code></pre>
-<p>Keep in mind that JSON requires double quotes!</p>
-<h3 id="json-type-examples">JSON Type Examples</h3>
-<h4 id="basic-example">Basic Example</h4>
-<pre><code>let car = {
-  name: &#39;Saab&#39;,
-  color: &#39;red&#39;
-  year: 2016
-}</code></pre>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="er">&quot;name&quot;:&quot;John&quot;</span> </span></code></pre></div>
+<p><strong>Keep in mind that JSON requires double quotes for
+strings!</strong></p>
+<h2 id="json-type-examples">JSON Type Examples</h2>
+<h3 id="basic-example">Basic Example</h3>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Saab&quot;</span><span class="fu">,</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;color&quot;</span><span class="fu">:</span> <span class="st">&quot;red&quot;</span><span class="fu">,</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;year&quot;</span><span class="fu">:</span> <span class="dv">2016</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
 <h4 id="json-string">JSON String</h4>
 <pre><code>{ &quot;name&quot;:&quot;Ricardo&quot; }</code></pre>
 <h4 id="json-number">JSON Number</h4>
@@ -62,7 +137,7 @@ on how Javascript literal objects are defined.</p>
 <pre><code>{
   &quot;person&quot;:{ &quot;name&quot;:&quot;Shankar Patel&quot;, &quot;age&quot;:40, &quot;city&quot;:&quot;Los Angeles&quot; }
 }</code></pre>
-<h2 id="accessing-json-with-dot-notation">Accessing JSON with Dot
+<h2 id="accessing-through-dot-notation">Accessing through Dot
 Notation</h2>
 <pre><code>character = { &quot;name&quot;:&quot;Shredder&quot;, &quot;age&quot;:30, &quot;home&quot;:&quot;TerrorDome&quot; };
 
@@ -73,55 +148,29 @@ Bracket Notation</h2>
 <h2 id="nested-json">Nested JSON</h2>
 <p>Very common!</p>
 <p>Example</p>
-<pre><code>rappers = {
+<pre><code>{
     &quot;rae_sremmurd&quot;: {
         &quot;rapper1&quot;:&quot;Swae Lee&quot;,
         &quot;rapper2&quot;:&quot;Slim Jxmmi&quot;,
     }
- }</code></pre>
-<h5 id="access-data-with-dot-or-bracket-notation.">Access data with dot
-or bracket notation.</h5>
-<pre><code> let bestRapper = rappers.rae_sremmurd.rapper2;</code></pre>
-<h5 id="change-data-value">Change data value</h5>
+}</code></pre>
+<h4 id="access-data-with-dot-or-bracket-notation.">Access data with dot
+or bracket notation.</h4>
+<p>Imagine we’ve imported and parsed our data inside the object
+rappers.</p>
+<pre><code>let bestRapper = rappers.rae_sremmurd.rapper2;</code></pre>
+<h4 id="change-data-value">Change data value</h4>
 <pre><code>rappers.rae_sremmurd.rapper2 = &quot;Taylor Swift&quot;;</code></pre>
-<h4 id="json-array">JSON Array</h4>
+<h4 id="accessing-data-from-an-array">Accessing data from an array</h4>
 <pre><code>let class = {
   &quot;students&quot;:[ &quot;Jorge&quot;,&quot;Will&quot;,&quot;Serena&quot;,&quot;Ellen&quot;,&quot;Moe&quot;,&quot;Shemp&quot;,&quot;Larry&quot;,&quot;Xenia&quot;]
 }
 
 let closestStudent = class.students[3]; // &quot;Ellen&quot;</code></pre>
 <h4 id="load-json-with-jquery">Load JSON with jQuery</h4>
-<pre><code>var myJSON = &#39;{&quot;name&quot;:&quot;Mindy&quot;, &quot;age&quot;:31, &quot;city&quot;:&quot;New York&quot;}&#39;;
-var myObj = JSON.parse(myJSON);
+<pre><code>let myJSON = &#39;{&quot;name&quot;:&quot;Mindy&quot;, &quot;age&quot;:31, &quot;city&quot;:&quot;New York&quot;}&#39;;
+let myObj = JSON.parse(myJSON);
 $(&quot;#demo&quot;).html(myObj.name);</code></pre>
-<h3 id="extensions">Extensions</h3>
-<p>files needed: - manifest - javascript file - html file</p>
-<p>Example manifest:</p>
-<pre><code>{
-  &quot;manifest_version&quot;: 3,
-  &quot;name&quot;: &quot;Hello Extensions&quot;,
-  &quot;description&quot;: &quot;Base Level Extension&quot;,
-  &quot;version&quot;: &quot;1.0&quot;,
-  &quot;action&quot;: {
-    &quot;default_popup&quot;: &quot;hello.html&quot;,
-    &quot;default_icon&quot;: &quot;hello_extensions.png&quot;
-  }
-}</code></pre>
-<p>Download the <a
-href="https://storage.googleapis.com/web-dev-uploads/image/WlD8wC6g8khYWPJUsQceQkhXSlv1/gmKIT88Ha1z8VBMJFOOH.png">icon</a>
-and rename to hello_extensions.png</p>
-<p>Example popup:</p>
-<pre><code>&lt;html&gt;
-  &lt;body&gt;
-    &lt;h1&gt;Hello Extensions&lt;/h1&gt;
-  &lt;/body&gt;
-&lt;/html&gt;</code></pre>
-<p>The extension now displays a popup when the extension’s action icon
-(toolbar icon) is clicked. You can test it in Chrome by loading it
-locally. Ensure all files are saved.</p>
-<p>–<a
-href="https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world">Hello
-World Extension</a></p>
 <h4 id="resources">Resources</h4>
 <ul>
 <li><a href="https://www.w3schools.com/js/js_json_intro.asp">W3Schools
@@ -129,14 +178,102 @@ JSON intro</a></li>
 <li>Darius Kazemi’s <a
 href="https://github.com/dariusk/corpora">Corpora</a> are mostly JSON
 files</li>
+<li><a href="https://www.w3schools.com/jquery/ajax_getjson.asp">jQuery
+getJSON() method</a></li>
+</ul>
+<h2 id="extensions-aka-browser-extensions">Extensions (aka Browser
+Extensions)</h2>
+<blockquote>
+<p>“software module for customizing a web browser. Browsers typically
+allow users to install a variety of extensions, including user interface
+modifications, cookie management, ad blocking, and the custom scripting
+and styling of web pages.”–<a
+href="https://en.wikipedia.org/wiki/Browser_extension">Wikipedia</a></p>
+</blockquote>
+<p>What examples can we think of?</p>
+<p>Each major browser has its own slightly different format. Chrome has
+over 100,000 extensions publicly available.</p>
+<p>Files needed:</p>
+<ul>
+<li>manifest</li>
+<li>javascript file</li>
+<li>html file</li>
+</ul>
+<p>Example manifest:</p>
+<pre><code>{
+  &quot;manifest_version&quot;: 3,
+  &quot;name&quot;: &quot;Hello&quot;,
+  &quot;description&quot;: &quot;Basic Extension&quot;,
+  &quot;version&quot;: &quot;1.0&quot;,
+  &quot;action&quot;: {
+    &quot;default_popup&quot;: &quot;hello.html&quot;,
+    &quot;default_icon&quot;: &quot;icon.png&quot;
+  }
+}</code></pre>
+<p>Note: The version number is in quotes because it’s actually a
+<em>string</em> here. For example, consider a typical minor version
+number like <code>0.0.1</code>.</p>
+<p>Download the <a
+href="https://storage.googleapis.com/web-dev-uploads/image/WlD8wC6g8khYWPJUsQceQkhXSlv1/gmKIT88Ha1z8VBMJFOOH.png">icon</a>
+and rename to icon.png</p>
+<p>Action is where the work happens. It links to the extension’s icon
+and the html content that will run on the popup.</p>
+<p>Example popup:</p>
+<pre><code>&lt;html&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello World&lt;/h1&gt;
+    &lt;p&gt;This is the extension&lt;/p&gt;
+    &lt;img src=&quot;fire.gif&quot; alt=&quot;animated fire&quot;&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>We cannot test our extension in a local server as it’s not meant to
+be viewed as a typical webpage.</p>
+<h3 id="loading-our-extension-in-chrome">Loading our extension in
+Chrome</h3>
+<p>You can test it in Chrome by loading it locally. Ensure all files are
+saved.</p>
+<ol type="1">
+<li>In the URL bar type in <code>chrome://extensions</code></li>
+<li>Toggle the Developer mode icon on the right.</li>
+<li>Click “Load unpacked” and navigate to the directory holding your
+extension (the manifest, html, icon and any other files).</li>
+<li>It should load. If you see an error note, click to open the error
+console and resolve any errors. Then try loading again.</li>
+</ol>
+<p>Once loaded, navigate to a website in the browser. Click on the
+puzzle piece icon. You should see a popup list with your new extension
+listed. Click on the ‘pin’ icon to add your new extension to your
+browser bar. You should now be able to see the icon in your browser
+bar.</p>
+<p>When you click your new extension’s icon you should see a popup.</p>
+<figure>
+<img src="../assets/popup.png"
+alt="Basic extension example popup window" />
+<figcaption aria-hidden="true">Basic extension example popup
+window</figcaption>
+</figure>
+<h3 id="resources-1">Resources</h3>
+<ul>
 <li><a
 href="https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world">intro
 to extensions in Chrome</a></li>
+<li><a
+href="https://developer.chrome.com/docs/extensions/get-started/tutorial/scripts-on-every-tab">run
+scripts on every page in Chrome</a></li>
+<li><a
+href="https://developer.chrome.com/docs/extensions/get-started/tutorial/scripts-activetab">inject
+scripts</a></li>
 </ul>
 <h2 id="homework">Homework</h2>
-<p>Make an extension for yourself. Follow the procedure to make an
-extension. It can be something funny, something serious, something
-helpful, or something strange.</p>
+<p><strong>For this week’s assigment, you are to begin working on an
+extension. Bring your sketch/design and concept, and a first start of
+your code (popup page in HTML, CSS, manifest done, but the code to run
+on the browser pages does not need to be done yet as we haven’t covered
+that yet).</strong></p>
+<p>Design an extension for yourself. Sketch the idea, then begin the
+process of following the procedure. Review the tutorials to see other
+capabilities of extensions. Your extension can be something funny,
+something serious, something helpful, or something strange.</p>
 <p>Start by brainstorming your idea. You may want to mock it up using
 glitch.com to see how it might look on an affected page. If your
 extension is for use on specific websites, use the inspector in the web
@@ -147,11 +284,10 @@ a favorite website easier to read, or removing its ads.</p>
 <p>Create your manifest. Feel free to start by copying a default one and
 making the changes that you need. Give your extension a name, a version
 number in quotes, and link to any needed html, js files.</p>
-<p>When finished, go to Chrome and open your extensions. Check to make
-sure that the Extensions are turned on (button in top right). Click on
-button to “Load Unpacked” extension. It should now be stored in your
-extensions bar. You can click on the pin to pin it to your extensions
-bar. Upload your folder (please compress it first) and a screenshot of
-your extension in use.</p>
+<p>When finished, you can go to Chrome and open your extensions. Check
+to make sure that the Extensions are turned on (button in top right).
+Click on button to “Load Unpacked” extension. It should now be stored in
+your extensions bar. You can click on the pin to pin it to your
+extensions bar.</p>
 </body>
 </html>
