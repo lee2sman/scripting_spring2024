@@ -6,3 +6,7 @@ html {
 body {
   margin-bottom: 4rem;
 }
+ul > li > a {
+  text-decoration: none !important;
+  cursor: pointer !important;
+}

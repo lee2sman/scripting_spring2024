@@ -7,3 +7,7 @@ body {
 	background-color: rgba(255, 255, 255, 0.5);
 	border-radius: 4px;
 }
+ul > li > a {
+  text-decoration: none !important;
+  cursor: pointer !important;
+}
