@@ -2,11 +2,15 @@ console.log("Running our extension!");
 
 //grab the <article></article> section of the site we are looking at
 let article = document.querySelector("article"); 
+let text;
 
 if (article){ //only run this section if there is an article section
    //grab the "article" tag section content
-   let text = article.textContent; 
-
+   text = article.textContent; 
+} else { //otherwise, let's just grab all text, this is a hack
+   article = document.body;
+  text = document.body.innerText;
+} 
    //create a regular expressions to find all the words
    let wordMatch = /[^\s]+/g; 
 
@@ -35,5 +39,3 @@ if (article){ //only run this section if there is an article section
     let body = document.body; //otherwise, place it at the beginning of the body
     body.prepend(badge);
    }
-   
-}
