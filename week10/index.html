@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Week 10 - Working with APIs</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="../assets/classless.css" />
+  <link rel="stylesheet" href="../assets/post.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="..">← Home</a></li>
+      <li><a href="../syllabus">?</a></li>
+      <li><a href="../week1">1</a></li>
+      <li><a href="../week2">2</a></li>
+      <li><a href="../week3">3</a></li>
+      <li><a href="../week4">4</a></li>
+      <li><a href="../week5">5</a></li>
+      <li><a href="../week6">6</a></li>
+      <li><a href="../week7">7</a></li>
+      <li><a href="../week8">8</a></li>
+      <li><a href="../week9">9</a></li>
+      <li><a href="../week10">10</a></li>
+    </ul>
+  </nav>
+<header id="title-block-header">
+<h1 class="title">Week 10 - Working with APIs</h1>
+</header>
+<h1 id="learn-about-apis-and-make-a-custom-weather-application">Learn
+about APIs and Make a custom weather application</h1>
+<p>Today: - APIs - Weather API - 1-on-1 Check-ins with Students -
+In-class work + homework</p>
+<h2 id="api">API</h2>
+<p>Application Program Interface</p>
+<p>An API gives a list of commands that programmers can use to access
+functionality that they themselves haven’t coded or even necessarily
+know how they work but can still access and get the data they need.</p>
+<p>APIs control access to resources such as data.</p>
+<p>They are used to communicate between disparate services.</p>
+<ul>
+<li>An interface for different pieces of software to communicate
+together over networks</li>
+<li>These are created by organizations, programmers, and companies to
+access their data</li>
+<li>There are open APIs and those requiring authorization.</li>
+<li>start out by using APIs that have tutorials or sample code and
+consider trying out ones that don’t require authorization as you learn
+how to use them!</li>
+</ul>
+<figure>
+<img
+src="http://lee2sman.github.io/intermediate-programming/images/api.png"
+alt="API" />
+<figcaption aria-hidden="true">API</figcaption>
+</figure>
+<p><a href="https://www.youtube.com/watch?v=OVvTv9Hy91Q">What Are
+APIs?</a> video</p>
+<p>Examples:</p>
+<ul>
+<li>YouTube API - Allows you to display videos on a web site.</li>
+<li>Twitter API - Allows you to display Tweets on a web site.</li>
+<li>Facebook API - Allows you to display Facebook info on a web
+site.</li>
+</ul>
+<h3 id="resources">Resources</h3>
+<p>A link of <a href="https://github.com/public-apis/public-apis">Open
+APIs</a> not requiring authorization</p>
+<p>Web API Intro on <a
+href="https://www.w3schools.com/js/js_api_intro.asp">w3schools</a></p>
+<h2
+id="build-your-own-weather-application-via-weather.gov-weather-api">Build
+your own Weather Application via Weather.gov weather API</h2>
+<p><a href="https://glitch.com/~purchase-weather-api">Minimal code
+starter</a></p>
+<h3 id="purchase-weather-api">Purchase Weather API</h3>
+<p>This is a stripped-down minimal example of getting started using the
+weather.gov API.</p>
+<p>Our class at <a href="https://purchase.edu">Purchase College</a> is
+located in the <em>coterminous town-village</em> of Harrison, NY.</p>
+<h2 id="procedure">Procedure</h2>
+<h3 id="index.html">index.html</h3>
+<p>Our index.html file holds the minimal-ist bit of text with a div that
+has the ID <code>the-forecast</code>.</p>
+<p>In our header we are importing jQuery to make it easier to import
+json date. This isn’t the only or necessarily the best way to import
+JSON, but it is consistent and easy to use.</p>
+<h3 id="style.css">style.css</h3>
+<p>A nod to style. This is currently minimally functional. Make it
+compelling, stylish, organized and intuitive.</p>
+<h3 id="script.js">script.js</h3>
+<p>With jQuery imported we can now grab the weather.gov json file
+holding the weather data from Harrison, NY with a simple line of
+code:</p>
+<pre><code>$.getJSON(url, grabMyData );</code></pre>
+<p>The dollar sign indicates we are using jQuery code. We run getJSON(),
+passing in the json file’s url and sending it to our grabMyData()
+function as input.</p>
+<p>Inside grabMyData() we are selecting the index file’s
+<em>the-forecast</em> div, and setting its inner text to a sun, cloud or
+!? depending on the current short weather forecast description value
+from our weather json data.</p>
+<p>And that is the most minimal possible example I can think of. Check
+out the json file for examples of many more facets of the weather API
+you can access.</p>
+<h2 id="rate-limiting">Rate Limiting</h2>
+<p>Companies with data APIs may restrict access to their data by
+requiring registration. If you make a commercial app that uses their
+live data, they may even charge a fee. Sometimes they may offer a free
+tier and a commercial tier. Weather.gov does not charge a fee, but they
+warn that they may limit access to intense users of their data:</p>
+<blockquote>
+<p>All of the information presented via the API is intended to be open
+data, free to use for any purpose. As a public service of the United
+States Government, we do not charge any fees for the usage of this
+service, although there are reasonable rate limits in place to prevent
+abuse and help ensure that everyone has access. The rate limit is not
+public information, but allows a generous amount for typical use. If the
+rate limit is execeed a request will return with an error, and may be
+retried after the limit clears (typically within 5 seconds). Proxies are
+more likely to reach the limit, whereas requests directly from clients
+are not likely.</p>
+</blockquote>
+<p>Be careful to avoid rapid reloading.</p>
+<p><a href="https://www.weather.gov/documentation/services-web-api">More
+information on the Web API service</a>.</p>
+<p><a href="https://weather-gov.github.io/api/gridpoints">More
+information on the API endpoints/queries</a></p>
+<h2 id="homework-2-weeks">Homework (2 weeks)</h2>
+<p>For this assignment you are to make a unique weather “app” via
+accessing the US Government Weather API from the National Weather
+Service.</p>
+<p>See above for documentation of the API.</p>
+<p>Using our starter code in class and the json data file for Purchase,
+create a compelling weather program website/app.</p>
+<p>Pay attention to: * crafting a compelling visual representation of
+the data * making it unique * ensuring all code runs * cleaning up the
+interface to be clear and bug-free</p>
+<p>Link to your weather program from your class website landing
+page.</p>
+<p>Upload the link to your finished program.</p>
+<p>Advanced: Bonus points for being mobile-responsive!</p>
+</body>
+</html>
