@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Week 12 - Working with data on the server</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="../assets/classless.css" />
+  <link rel="stylesheet" href="../assets/post.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="..">← Home</a></li>
+      <li><a href="../syllabus">?</a></li>
+      <li><a href="../week1">1</a></li>
+      <li><a href="../week2">2</a></li>
+      <li><a href="../week3">3</a></li>
+      <li><a href="../week4">4</a></li>
+      <li><a href="../week5">5</a></li>
+      <li><a href="../week6">6</a></li>
+      <li><a href="../week7">7</a></li>
+      <li><a href="../week8">8</a></li>
+      <li><a href="../week9">9</a></li>
+      <li><a href="../week10">10</a></li>
+    </ul>
+  </nav>
+<header id="title-block-header">
+<h1 class="title">Week 12 - Working with data on the server</h1>
+</header>
+<h3 id="today">Today</h3>
+<ul>
+<li>JSON with servers</li>
+<li>parsing</li>
+<li>radio project work and check-ins</li>
+</ul>
+<h2 id="json-with-servers">JSON with servers</h2>
+<p>JSON is used for storing, sending and receiving data on servers.</p>
+<p>If you have data stored in a JavaScript object, you can convert the
+object into JSON, and send it to a server. In other words, you can save
+data by SENDing it to a server. (names, passwords, etc).</p>
+<p>If you receive data in JSON format, you can convert it into a
+JavaScript object. In other words, you can GET data from a server.</p>
+<p>JavaScript has the command <code>JSON.parse()</code> to turn JSON
+data into a Javascript object. By using this command, you can work with
+the data in your javascript code.</p>
+<p>Example data from a server:</p>
+<pre><code>&#39;{ &quot;name&quot;:&quot;Shane&quot;, &quot;age&quot;:39, &quot;city&quot;:&quot;Los Angeles&quot;}&#39;</code></pre>
+<p>We use json.parse() to turn it into a Javascript object. The text
+must be written with proper JSON syntax or you will get an error.</p>
+<pre><code>var obj = JSON.parse( &#39;{ &quot;name&quot;:&quot;Shane&quot;, &quot;age&quot;:39, &quot;city&quot;:&quot;Los Angeles&quot;}&#39; );</code></pre>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;h2&gt;Create Object from JSON String&lt;/h2&gt;
+
+&lt;p id=&quot;demo&quot;&gt;&lt;/p&gt;
+
+&lt;script&gt;
+var txt = &#39;{&quot;name&quot;:&quot;Shane&quot;, &quot;age&quot;:39, &quot;city&quot;:&quot;Los Angeles&quot;}&#39;
+var obj = JSON.parse(txt);
+document.getElementById(&quot;demo&quot;).innerHTML = obj.name + &quot;, &quot; + obj.age;
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<h3 id="sending-data-to-a-server">Sending data to a server</h3>
+<p>We previously covered parsing text into a JSON object to get data
+from a server (to display on a website for example).</p>
+<p>To send data to a server, we need to convert the data into a string.
+We do this with JSON.stringify().</p>
+<p>Example</p>
+<pre><code>var obj = { name: &quot;Shane&quot;, age: 39, city: &quot;Los Angeles&quot; };
+
+var myJSON = JSON.stringify(obj);</code></pre>
+<h3 id="loading-json-file-with-jquery">Loading JSON file with
+Jquery</h3>
+<p>Jquery gives us methods to make it easier to work with JSON.</p>
+<p>A basic getJSON request is formatted as:</p>
+<pre><code>$.getJSON(url, data, success);</code></pre>
+<p>The url is local or remote. The <em>data</em> is optional, an object
+or strong sent to the server when requesting data, and success is an
+optional callback function to execute after the JSON request is
+successful.</p>
+<p>example</p>
+<pre><code>function success(data) {
+  // do something with data, which is an object
+}</code></pre>
+<h2 id="finishing-our-radio-project">Finishing our Radio Project</h2>
+<p>For next week, finish your radio project solo or in a small
+group.</p>
+<h3 id="requirements">Requirements</h3>
+<ul>
+<li>Compelling design</li>
+<li>Mobile responsive design</li>
+<li>Uses data fed from an external json file</li>
+<li>Is capable of playing (and switching) radio stations</li>
+<li>Uses the webaudio API</li>
+</ul>
+<p>The goal of this project is to complete the creation of your own
+custom web app for a radio station player. The application should be a
+unique and compellingly designed radio player that presents the user
+with a number of stations to select from. Selecting a station should
+cause the station to begin playing, and any previously selected station
+should stop. Beyond this, you may add any additional details and design
+elements you require.</p>
+</body>
+</html>
