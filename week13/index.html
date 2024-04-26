@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Week 13 - Persistence with localStorage</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="../assets/classless.css" />
+  <link rel="stylesheet" href="../assets/post.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="..">← Home</a></li>
+      <li><a href="../syllabus">?</a></li>
+      <li><a href="../week1">1</a></li>
+      <li><a href="../week2">2</a></li>
+      <li><a href="../week3">3</a></li>
+      <li><a href="../week4">4</a></li>
+      <li><a href="../week5">5</a></li>
+      <li><a href="../week6">6</a></li>
+      <li><a href="../week7">7</a></li>
+      <li><a href="../week8">8</a></li>
+      <li><a href="../week9">9</a></li>
+      <li><a href="../week10">10</a></li>
+      <li><a href="../week11">11</a></li>
+      <li><a href="../week12">12</a></li>
+      <li><a href="../week13">13</a></li>
+    </ul>
+  </nav>
+<header id="title-block-header">
+<h1 class="title">Week 13 - Persistence with localStorage</h1>
+</header>
+<h2 id="today">Today</h2>
+<ul>
+<li>forms</li>
+<li>data persistence</li>
+<li>localStorage</li>
+<li>building a simple web app with forms and localStorage</li>
+<li>Final project</li>
+</ul>
+<h2 id="forms">Forms</h2>
+<p>Use basic HTML</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;h2&gt;Display an Image as the Submit button&lt;/h2&gt;
+
+&lt;form action=&quot;/action_page.php&quot;&gt;
+  &lt;label for=&quot;fname&quot;&gt;First name: &lt;/label&gt;
+  &lt;input type=&quot;text&quot; id=&quot;fname&quot; name=&quot;fname&quot;&gt;&lt;br&gt;&lt;br&gt;
+  &lt;label for=&quot;lname&quot;&gt;Last name: &lt;/label&gt;
+  &lt;input type=&quot;text&quot; id=&quot;lname&quot; name=&quot;lname&quot;&gt;&lt;br&gt;&lt;br&gt;
+  &lt;input type=&quot;image&quot; src=&quot;img_submit.gif&quot; alt=&quot;Submit&quot; width=&quot;48&quot; height=&quot;48&quot;&gt;
+&lt;/form&gt;
+
+&lt;p&gt;&lt;b&gt;Note:&lt;/b&gt; The input type=&quot;image&quot; sends the X and Y coordinates of the click that activated the image button.&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p><em>adapted from <a
+href="https://www.w3schools.com/html/html_forms.asp">w3schools</a></em></p>
+<h2 id="intro-to-localstorage">Intro to LocalStorage</h2>
+<p>LocalStorage is a property of a browser’s window interface. It is
+specific to an individual browser, and data is persistent across browser
+sessions.</p>
+<p>All data stored in LocalStorage is saved as a string.</p>
+<p>The format for storing data:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>localStorage<span class="op">.</span><span class="fu">setItem</span>(<span class="st">&quot;name&quot;</span><span class="op">,</span><span class="st">&quot;Celine&quot;</span>)<span class="op">;</span></span></code></pre></div>
+<p>To get/load data:</p>
+<pre><code>let currentName = localStorage.getItem(&quot;name&quot;);</code></pre>
+<p>To clear data:</p>
+<pre><code>localStorage.clear();</code></pre>
+<p><em>Note:</em> that if you load in a “private browsing” or
+“incognito” session the data will clear when you close the window/tab.
+Certain privacy extensions could also potentially clear the data.</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;body&gt;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h1&gt;</span>The Window Object<span class="kw">&lt;/h1&gt;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h2&gt;</span>The localStorage Property<span class="kw">&lt;/h2&gt;</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;p&gt;&lt;button</span> <span class="er">onclick</span><span class="ot">=</span><span class="st">&quot;clickCounter()&quot;</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;button&quot;</span><span class="kw">&gt;</span>Click me!<span class="kw">&lt;/button&gt;&lt;/p&gt;</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;p&gt;</span>Number of clicks:<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;p</span> <span class="er">id</span><span class="ot">=</span><span class="st">&quot;demo&quot;</span><span class="kw">&gt;&lt;/p&gt;</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;p&gt;</span>Click the button to see the counter increase.<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;p&gt;</span>Close the browser tab (or window), and try again, and the counter will continue to count (is not reset).<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;script&gt;</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="fu">clickCounter</span>()<span class="op">;</span> <span class="co">//run our function on load</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">clickCounter</span>() {</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (localStorage<span class="op">.</span><span class="at">clickcount</span>) { <span class="co">//check it exists</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    localStorage<span class="op">.</span><span class="at">clickcount</span> <span class="op">=</span> <span class="bu">Number</span>(localStorage<span class="op">.</span><span class="at">clickcount</span>)<span class="op">+</span><span class="dv">1</span><span class="op">;</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> { <span class="co">//otherwise start at 1</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    localStorage<span class="op">.</span><span class="at">clickcount</span> <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>  <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;demo&quot;</span>)<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> localStorage<span class="op">.</span><span class="at">clickcount</span><span class="op">;</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/script&gt;</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/body&gt;</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
+<p><em>example from <a
+href="https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_win_localstorage2">w3schools</a></em></p>
+<ul>
+<li><a
+href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage">Additional
+info from Mozilla Resources for Developers</a></li>
+</ul>
+<h3 id="label-element">label element</h3>
+<p><code>&lt;label&gt;</code></p>
+<h2 id="working-with-forms">Working with forms</h2>
+<p>Use a form to collect user input.</p>
+<ul>
+<li>w3schools <a
+href="https://www.w3schools.com/html/html_forms.asp">forms</a>
+tutorials</li>
+<li><a
+href="https://glitch.com/edit/#!/form-for-saving-notes-with-localstorage?path=script.js%3A31%3A5">example
+code</a> on Glitch</li>
+</ul>
+<h2 id="more-advanced-localstorage-example">More advanced localStorage
+example</h2>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+    &lt;title&gt;Save data in localStorage using JavaScript&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot; /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;form id=&quot;note-form&quot;&gt;
+      &lt;input id=&quot;note-input&quot; type=&quot;text&quot; placeholder=&quot;+ Add Note&quot; required /&gt;
+      &lt;button id=&quot;note-submit&quot;&gt;Save&lt;/button&gt;
+    &lt;/form&gt;
+    &lt;ul id=&quot;notes&quot;&gt;&lt;/ul&gt;
+    &lt;script&gt;
+      let noteForm = document.getElementById(&quot;note-form&quot;);
+      let noteInput = document.getElementById(&quot;note-input&quot;);
+      let noteSubmit = document.getElementById(&quot;note-submit&quot;);
+      let notes = document.getElementById(&quot;notes&quot;);
+
+      let notesStorage = localStorage.getItem(&quot;notes&quot;)
+        ? JSON.parse(localStorage.getItem(&quot;notes&quot;))
+        : [];
+
+      noteForm.addEventListener(&quot;submit&quot;, (e) =&gt; {
+        e.preventDefault();
+        notesStorage.push(noteInput.value);
+        localStorage.setItem(&quot;notes&quot;, JSON.stringify(notesStorage));
+        listBuilder(noteInput.value);
+        noteInput.value = &quot;&quot;;
+      });
+
+      let listBuilder = (text) =&gt; {
+        const note = document.createElement(&quot;li&quot;);
+        note.innerHTML = text + &#39; &lt;button onclick=&quot;deleteNote(this)&quot;&gt;x&lt;/button&gt;&#39;;
+        notes.appendChild(note);
+      };
+
+      let getNotes = JSON.parse(localStorage.getItem(&quot;notes&quot;));
+      getNotes.forEach((note) =&gt; {
+        listBuilder(note);
+      });
+
+      let deleteNote = (btn) =&gt; {
+        let el = btn.parentNode;
+        const index = [...el.parentElement.children].indexOf(el);
+        notesStorage.splice(index, 1);
+        localStorage.setItem(&quot;notes&quot;, JSON.stringify(notesStorage));
+        el.remove();
+      };
+      &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p><em>adapted from <a
+href="https://gist.github.com/w3collective">w3collective</a></em></p>
+<h2 id="final-project">Final Project</h2>
+<p>This semester we have built websites for our class, false or
+misleading institutional websites, personalized clock programs, custom
+web extensions that modify the browser, an experimental weather web
+application.</p>
+<p>We’ve covered ‘frontend’ programming including HTML, CSS and
+Javascript, modifying the DOM, as well as working with servers on the
+backend, creating and deploying node-based web applications with
+interaction, data persistence and data/API queries.</p>
+<p>For this assignment you will make a custom web application, either
+your own idea, or building further from a project we worked on this
+semester.</p>
+<h1 id="goals">Goals:</h1>
+<ul>
+<li>the site should be responsive - it must work well on the desktop and
+mobile browsers</li>
+<li>the site should have interactive elements - you will want to use
+javascript</li>
+<li>the design should be compelling and unique - no cookie cutter sites.
+Question what the site is, the conventions of such sites, and make it
+your own!</li>
+<li>the site should be well-executed and original</li>
+<li>Consider how/if your site works with data and APIs.</li>
+<li>the site should use data persistence with localStorage</li>
+</ul>
+<p><strong>Final projects must be uploaded to the web by Wednesday May
+15 at noon.</strong> We will have a series of smaller steps to
+accomplish leading up to that.</p>
+<h3 id="homework">Homework</h3>
+<p>Project proposal and initial scaffolding setup (HTML page, CSS page,
+Javascript)</p>
+</body>
+</html>
